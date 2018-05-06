@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1=title
+  table
+    tr
+      th Title
+      th Description
+      th Category
+      th Photo
+    each post in posts
+      tr
+        td= post.post.title
+        td= post.post.desc
+        td= post.post.category
+        td
+          img(src=post.post.image,width='50%')
+        td
+          form(method='POST', action='/posts/' + post.key)
+            input(type='submit' name='submit' value='Keep')
+            input(type='submit' name='submit' value='Delete')
